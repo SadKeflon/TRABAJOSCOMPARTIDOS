@@ -7,6 +7,7 @@ def lectura_datos(nombre):
         linea = linea.rstrip("\n").split(",")
         datos.append(linea)
     return datos
+
 def positivos(datos):
     positivos = []
     for linea in datos:
@@ -14,21 +15,27 @@ def positivos(datos):
             positivos.append(linea)
     return positivos
 
-def funcion_a(datos):
+def regiones(positivos):
     regiones = []
     for linea in datos:
         if linea[3] not in regiones:
             regiones.append(linea[3])
+    return regiones
+
+def funcion_a(datos):
+    x = positivos(datos)
+    y = regiones(x)
     cont = 0
     casos = 0
     while cont <= 15:
-        for linea in positivos:   
-            if regiones[cont] == linea[3]:
+        for linea in x:   
+            if y[cont] == linea[3]:
                 del linea
                 casos += 1
-        print(regiones[cont] , ":", casos)
+        print(y[cont] , ":", casos)
         cont += 1
         casos = 0
+
 def funcion_b(positivos):
     postivofebrero = 0
     for linea in positivos:
@@ -48,8 +55,8 @@ def funcion_d(positivos):
             if linea[2][3:] == "03-2022":
                 loro += 1
     return loro
+
 datos = lectura_datos("protocolo_vigilancia.txt")
-positivos = positivos(datos)
-funcion_a(positivos)
+funcion_a(datos)
 
 

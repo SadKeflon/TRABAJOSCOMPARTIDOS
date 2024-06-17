@@ -1,3 +1,5 @@
+import matplotlib as plt
+
 def lectura_datos(nombre):
     archivo = open("protocolo_vigilancia.txt", "r", encoding="UTF-8")
     datos = []
@@ -42,12 +44,14 @@ def funcion_b(positivos):
         if linea[2][3:] == "02-2023":
             postivofebrero += 1
     return postivofebrero
+
 def funcion_c(positivos):
     pelicanos = 0
     for linea in positivos:
         if linea[5].upper() == "PELICANO":
             pelicanos += 1
     return pelicanos
+
 def funcion_d(positivos):
     loro = 0   
     for linea in positivos:
